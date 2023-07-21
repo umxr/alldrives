@@ -19,19 +19,19 @@ const AboutPage = () => {
               <p>
                 Every story has its beginning, and ours began with a burning
                 desire for adventure. As we ventured on scenic drives, we
-                couldn't help but imagine the possibilities of creating a
+                couldn&apos;t help but imagine the possibilities of creating a
                 community-driven platform for fellow road warriors. All Drives
                 became the manifestation of that dream – a place where each
                 roadtrip enthusiast could find, share, and embark on journeys
                 that left a lasting imprint on their hearts.
               </p>
               <p className="mt-8">
-                All Drives is more than just an app or a website; it's a hub for
-                the like-hearted to connect. Through the love of driving, we
-                weave bonds that span continents and cultures. With All Drives,
-                you are never alone on the road. Share your stories, swap tips,
-                and kindle friendships with fellow adventurers as you traverse
-                the world's most scenic roads.
+                All Drives is more than just an app or a website; it&apos;s a
+                hub for the like-hearted to connect. Through the love of
+                driving, we weave bonds that span continents and cultures. With
+                All Drives, you are never alone on the road. Share your stories,
+                swap tips, and kindle friendships with fellow adventurers as you
+                traverse the world&apos;s most scenic roads.
               </p>
             </div>
             <div>
@@ -45,11 +45,11 @@ const AboutPage = () => {
               </p>
               <p className="mt-8">
                 We invite you to redefine what adventure means to you. With All
-                Drives, it's not just about reaching a destination; it's about
-                immersing yourself in the journey. Whether you're seeking a solo
-                escape, a romantic getaway, or an adrenaline-packed adventure
-                with friends, All Drives empowers you to customize your trips to
-                match your unique aspirations.
+                Drives, it&apos;s not just about reaching a destination;
+                it&apos;s about immersing yourself in the journey. Whether
+                you&apos;re seeking a solo escape, a romantic getaway, or an
+                adrenaline-packed adventure with friends, All Drives empowers
+                you to customize your trips to match your unique aspirations.
               </p>
             </div>
           </div>
