@@ -5,6 +5,16 @@ export const metadata: Metadata = {
   title: "Contact Us - All Drives",
   description:
     "Get in touch with All Drives. We'd love to hear from you! Reach out for inquiries, support, media partnerships, or to join our road trip community.",
+  twitter: {
+    title: "Contact Us - All Drives",
+    description:
+      "Get in touch with All Drives. We'd love to hear from you! Reach out for inquiries, support, media partnerships, or to join our road trip community.",
+  },
+  openGraph: {
+    title: "Contact Us - All Drives",
+    description:
+      "Get in touch with All Drives. We'd love to hear from you! Reach out for inquiries, support, media partnerships, or to join our road trip community.",
+  },
 };
 
 const ContactPage = () => {

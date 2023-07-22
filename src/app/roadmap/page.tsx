@@ -4,6 +4,16 @@ export const metadata: Metadata = {
   title: "Roadmap - All Drives",
   description:
     "Discover our journey and plans at All Drives. Join us in redefining road trips with exciting routes, a vibrant community, and global adventures.",
+  twitter: {
+    title: "Roadmap - All Drives",
+    description:
+      "Discover our journey and plans at All Drives. Join us in redefining road trips with exciting routes, a vibrant community, and global adventures.",
+  },
+  openGraph: {
+    title: "Roadmap - All Drives",
+    description:
+      "Discover our journey and plans at All Drives. Join us in redefining road trips with exciting routes, a vibrant community, and global adventures.",
+  },
 };
 
 const TimelinePage = () => {
