@@ -86,7 +86,7 @@ const TimelinePage = () => {
         </div>
         <div className="mt-10 max-w-2xl">
           <h2 className="mt-16 text-2xl font-bold tracking-tight text-gray-900">
-            Phase 5: Global Expeditions (Beyond Year 3)
+            Phase 5: Global Expeditions
           </h2>
           <p className="mt-6">
             Looking ahead, we plan to become a global leader in the road trip

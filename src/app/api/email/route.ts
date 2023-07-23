@@ -18,8 +18,8 @@ export async function POST(request: Request) {
       .filter(Boolean)
       .join(" ");
 
-    resend.sendEmail({
-      from: "umarg1997@gmail.com",
+    await resend.sendEmail({
+      from: "hello@umar.codes",
       to: body.email,
       subject: "Hello from Resend",
       react: ContactEmail({
