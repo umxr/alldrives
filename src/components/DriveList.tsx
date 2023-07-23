@@ -1,4 +1,6 @@
+import { Drive } from "@/groq/getDrives";
 import Image from "next/image";
+import { format } from "date-fns";
 
 const posts = [
   {
@@ -20,7 +22,12 @@ const posts = [
   // More posts...
 ];
 
-export const DriveList = () => {
+type DriveListProps = {
+  items?: Drive[];
+};
+
+export const DriveList = (props: DriveListProps) => {
+  const { items } = props;
   return (
     <div className="bg-white py-12">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -34,13 +41,13 @@ export const DriveList = () => {
           </p>
         </div>
         <div className="mx-auto mt-16 grid max-w-2xl auto-rows-fr grid-cols-1 gap-8 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-          {posts.map((post) => (
+          {items?.map((item) => (
             <article
-              key={post.id}
+              key={item._id}
               className="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-8 pb-8 pt-80 sm:pt-48 lg:pt-80"
             >
               <Image
-                src={post.imageUrl}
+                src={item.mainImage.url}
                 alt=""
                 className="absolute inset-0 -z-10 h-full w-full object-cover"
                 fill
@@ -49,14 +56,14 @@ export const DriveList = () => {
               <div className="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
 
               <div className="flex flex-wrap items-center gap-y-1 overflow-hidden text-sm leading-6 text-gray-300">
-                <time dateTime={post.datetime} className="mr-8">
-                  {post.date}
+                <time dateTime={item._updatedAt} className="mr-8">
+                  {format(new Date(item._updatedAt), "MMM d, yyyy")}
                 </time>
               </div>
               <h3 className="mt-3 text-lg font-semibold leading-6 text-white">
-                <a href={post.href}>
+                <a href={`/drives/${item.slug}`}>
                   <span className="absolute inset-0" />
-                  {post.title}
+                  {item.title}
                 </a>
               </h3>
             </article>

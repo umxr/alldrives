@@ -1,5 +1,6 @@
 import { DriveList } from "@/components/DriveList";
 import { Hero } from "@/components/Hero";
+import { getDrives } from "@/groq/getDrives";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -19,11 +20,12 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Home() {
+export default async function Home() {
+  const drives = await getDrives();
   return (
     <>
       <Hero />
-      <DriveList />
+      <DriveList items={drives} />
     </>
   );
 }
