@@ -22,7 +22,9 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
-  const drives = await getDrives();
+  const drives = await getDrives({
+    limit: 4,
+  });
   return (
     <>
       <Hero backgroundImage={heroImage}>
