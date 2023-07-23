@@ -1,11 +1,41 @@
-import Image from "next/image";
-import heroImage from "../public/banner.jpg";
+import Image, { StaticImageData } from "next/image";
 
-export const Hero = () => {
+import { ReactNode } from "react";
+
+type TitleProps = {
+  children: ReactNode;
+};
+
+const Title = (props: TitleProps) => {
+  const { children } = props;
+  return (
+    <h2 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
+      {children}
+    </h2>
+  );
+};
+
+type ContentProps = {
+  children?: ReactNode;
+};
+
+const Content = (props: ContentProps) => {
+  const { children } = props;
+  if (!children) return null;
+  return <p className="mt-6 text-lg leading-8 text-white">{children}</p>;
+};
+
+type HeroProps = {
+  children: ReactNode;
+  backgroundImage: string | StaticImageData;
+};
+
+export const Hero = (props: HeroProps) => {
+  const { children, backgroundImage } = props;
   return (
     <div className="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32">
       <Image
-        src={heroImage}
+        src={backgroundImage}
         alt="Banner Image"
         className="absolute inset-0 -z-10 h-full w-full object-cover"
         fill={true}
@@ -35,18 +65,11 @@ export const Hero = () => {
         />
       </div>
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl lg:mx-0">
-          <h2 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
-            Embark on Unforgettable Journeys
-          </h2>
-          <p className="mt-6 text-lg leading-8 text-white">
-            Discover breathtaking driving routes, picturesque landscapes, and
-            hidden gems on epic road trips curated by travel experts and fellow
-            explorers. Join our vibrant community and fuel your wanderlust with
-            All Drives - your gateway to adventure.
-          </p>
-        </div>
+        <div className="mx-auto max-w-2xl lg:mx-0">{children}</div>
       </div>
     </div>
   );
 };
+
+Hero.Title = Title;
+Hero.Content = Content;
