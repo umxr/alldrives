@@ -3,7 +3,7 @@ import { sanityClient } from "./sanityClient";
 
 interface EmailInput {
   firstName: string;
-  lastName: string;
+  lastName?: string;
   email: string;
   message: string;
 }

@@ -73,10 +73,10 @@ export const ContactForm = () => {
             firstName,
             lastName,
             email,
+            message,
           }),
         });
         const json = (await response.json()) as ContactFormResponse;
-        console.log("json", json);
         if (json.success) {
           setStatus("success");
         }
@@ -88,7 +88,7 @@ export const ContactForm = () => {
         setLoading(false);
       }
     },
-    [agreed, email, firstName, lastName, resetForm]
+    [agreed, email, firstName, lastName, message, resetForm]
   );
 
   return (
