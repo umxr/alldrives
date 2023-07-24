@@ -40,3 +40,5 @@ export default async function Home() {
     </>
   );
 }
+
+export const revalidate = 60 * 60 * 24; // 24 hours
