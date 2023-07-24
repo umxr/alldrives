@@ -6,6 +6,7 @@ export const drive = groq`
   title,
   "slug": slug.current,
   details,
+  public,
   mainImage {
     ...asset -> {
       url
@@ -26,6 +27,7 @@ export type Drive = {
   title: string;
   slug: string;
   details: DriveDetails;
+  public: boolean;
   mainImage: {
     url: string;
   };

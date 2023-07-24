@@ -1,7 +1,7 @@
 import { Hero } from "@/components/Hero";
 import { Stats } from "@/components/Stats";
 import { getDriveBySlug } from "@/groq/getDriveBySlug";
-import { Metadata, ResolvingMetadata } from "next";
+import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 type DrivePageProps = {
@@ -9,15 +9,33 @@ type DrivePageProps = {
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
-export async function generateMetadata(
-  { params, searchParams }: DrivePageProps,
-  parent?: ResolvingMetadata
-): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: DrivePageProps): Promise<Metadata> {
   // read route params
   const slug = params.slug;
 
   // fetch data
   const drive = await getDriveBySlug(slug);
+
+  if (!drive) {
+    return {
+      title: "All Drives - Road Trips & Routes",
+      description:
+        "Explore breathtaking driving routes, scenic road trips & hidden gems. Join a global community of road trip enthusiasts. Start your journey with All Drives!",
+      twitter: {
+        title: "All Drives - Road Trips & Routes",
+        description:
+          "Explore breathtaking driving routes, scenic road trips & hidden gems. Join a global community of road trip enthusiasts. Start your journey with All Drives!",
+      },
+      openGraph: {
+        title: "All Drives - Road Trips & Routes",
+        description:
+          "Explore breathtaking driving routes, scenic road trips & hidden gems. Join a global community of road trip enthusiasts. Start your journey with All Drives!",
+        url: `https://alldrives.vercel.app/drives/${slug}`,
+      },
+    };
+  }
 
   return {
     title: `${drive?.title} - All Drives`,
@@ -39,6 +57,9 @@ const Drive = async (props: DrivePageProps) => {
   const slug = params.slug;
   const pageData = await getDriveBySlug(slug);
   if (!pageData) {
+    return notFound();
+  }
+  if (pageData.public === false) {
     return notFound();
   }
   return (

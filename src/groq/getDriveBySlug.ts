@@ -3,7 +3,7 @@ import { Drive, drive } from "./drive";
 import { clientFetch } from "@/lib/sanityClient";
 
 export const getDriveBySlugQuery = groq`
-  *[_type == "drive" && slug.current == $slug] {
+  *[_type == "drive" && slug.current == $slug && public == true] {
     ${drive}
   }
 `;
