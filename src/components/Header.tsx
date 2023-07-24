@@ -8,7 +8,7 @@ import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
 const navigation = [
-  { name: "Drives", href: "/" },
+  { name: "Drives", href: "/drives" },
   { name: "About", href: "/about" },
   { name: "Roadmap", href: "/roadmap" },
 ];

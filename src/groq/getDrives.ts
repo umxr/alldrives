@@ -13,12 +13,12 @@ type GetDrivesOpts = {
 };
 
 export const getDrives = async (
-  opts: GetDrivesOpts
+  opts?: GetDrivesOpts
 ): Promise<Drive[] | undefined> => {
   try {
     const drives = await clientFetch(getDrivesQuery, {
       start: 0,
-      end: opts.limit || 100,
+      end: opts?.limit || 100,
     });
     return drives;
   } catch (error) {
