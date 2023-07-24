@@ -1,5 +1,7 @@
-import { Header } from "@/components/Header";
 import "./globals.css";
+
+import { Analytics } from "@vercel/analytics/react";
+import { Header } from "@/components/Header";
 import { Inter } from "next/font/google";
 import { Footer } from "@/components/Footer";
 
@@ -21,6 +23,7 @@ export default function RootLayout({
         <Header />
         <main className="flex-grow">{children}</main>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
