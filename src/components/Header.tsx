@@ -25,7 +25,7 @@ export const Header = () => {
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">All Drives</span>
-            <Logo width="131" height="24" />
+            <Logo width="48" height="48" className="fill-white" />
           </Link>
         </div>
         <div className="flex lg:hidden">
@@ -69,7 +69,7 @@ export const Header = () => {
           <div className="flex items-center justify-between">
             <Link href="/" className="-m-1.5 p-1.5">
               <span className="sr-only">All Drives</span>
-              <Logo width="131" height="24" />
+              <Logo width="48" height="48" className="fill-white" />
             </Link>
             <button
               type="button"
