@@ -23,6 +23,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: "https://alldrives.xyz/roadmap",
       lastModified: new Date(),
     },
+    {
+      url: "https://alldrives.xyz/drives",
+      lastModified: new Date(),
+    },
     ...drives.map((drive) => {
       return {
         url: `https://alldrives.xyz/drives/${drive.slug}`,
