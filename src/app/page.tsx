@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 
 export default async function Home() {
   const drives = await getDrives({
-    limit: 4,
+    limit: 6,
   });
   return (
     <>
