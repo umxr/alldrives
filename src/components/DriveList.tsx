@@ -1,13 +1,15 @@
 import Image from "next/image";
 import { format } from "date-fns";
 import { Drive } from "@/groq/drive";
+import Link from "next/link";
 
 type DriveListProps = {
   items?: Drive[];
+  showCta?: boolean;
 };
 
 export const DriveList = (props: DriveListProps) => {
-  const { items } = props;
+  const { items, showCta = false } = props;
   return (
     <div className="bg-white py-12">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -49,6 +51,30 @@ export const DriveList = (props: DriveListProps) => {
             </article>
           ))}
         </div>
+        {showCta && (
+          <Link
+            href="/drives"
+            className="mt-10 flex items-center justify-center space-x-3"
+          >
+            <p className="text-lg text-center font-bold tracking-tight text-gray-900">
+              See all routes{" "}
+            </p>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
+              />
+            </svg>
+          </Link>
+        )}
       </div>
     </div>
   );

@@ -36,7 +36,7 @@ export default async function Home() {
           All Drives - your gateway to adventure.
         </Hero.Content>
       </Hero>
-      <DriveList items={drives} />
+      <DriveList items={drives} showCta />
     </>
   );
 }
