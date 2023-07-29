@@ -109,14 +109,6 @@ const TimelinePage = () => {
             experienced and connect a community of explorers who share a love
             for the open road.
           </p>
-          <p className="mt-6">
-            Please note that the roadmap provided above is just a sample and can
-            be customized based on your startup&apos;s actual timeline and
-            plans. If you have specific milestones or details to add or modify,
-            feel free to do so. The &quot;Road Map&quot; section is an
-            opportunity to share your startup&apos;s vision and future goals
-            with your audience, inspiring them to be part of your journey.
-          </p>
         </div>
       </div>
     </div>
