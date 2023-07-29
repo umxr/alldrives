@@ -24,4 +24,6 @@ const DrivePage = async () => {
   return <DriveList items={drives} />;
 };
 
+export const revalidate = 60 * 60;
+
 export default DrivePage;
