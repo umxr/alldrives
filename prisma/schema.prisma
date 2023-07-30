@@ -1,0 +1,40 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+}
+
+model User {
+  id      Int    @id @default(autoincrement())
+  clerkId String @unique
+  votes   Vote[]
+}
+
+model Drive {
+  id       String @id @default(uuid())
+  sanityId String @unique
+  votes    Vote[]
+}
+
+model Vote {
+  id       Int      @id @default(autoincrement())
+  voteType VoteType
+  userId   Int
+  driveId  String
+  user     User     @relation(fields: [userId], references: [id])
+  drive    Drive    @relation(fields: [driveId], references: [id])
+
+  @@index([userId, driveId], name: "user_post_index")
+}
+
+enum VoteType {
+  UPVOTE
+  DOWNVOTE
+}

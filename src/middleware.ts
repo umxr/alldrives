@@ -9,6 +9,7 @@ export default authMiddleware({
     "/drives/[slug]",
     "/road-map",
     "/submit-drive",
+    "/api/cron",
   ],
 });
 
