@@ -1,9 +1,10 @@
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Analytics } from "@vercel/analytics/react";
-import { Header } from "@/components/Header";
+import { Header, HeaderFallback } from "@/components/Header";
 import { Inter } from "next/font/google";
 import { Footer } from "@/components/Footer";
+import { Suspense } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,7 +22,9 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en" className="h-full">
         <body className={`${inter.className} flex flex-col h-screen`}>
-          <Header />
+          <Suspense fallback={<HeaderFallback />}>
+            <Header />
+          </Suspense>
           <main className="flex-grow">{children}</main>
           <Footer />
           <Analytics />
