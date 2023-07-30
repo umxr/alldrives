@@ -59,3 +59,12 @@ export async function POST(request: Request) {
     return NextResponse.json({ success: false, error });
   }
 }
+
+export async function GET(request: Request) {
+  try {
+    const users = await prisma.user.findMany();
+    return NextResponse.json({ success: true, users });
+  } catch (error) {
+    return NextResponse.json({ success: false, error });
+  }
+}
