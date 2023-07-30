@@ -45,8 +45,8 @@ export async function POST(request: Request) {
     // create entry in sanity
     await sanityEmail.sendEmail(body);
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json({ success: true, message: "Email sent" });
   } catch (error) {
-    return NextResponse.json({ success: false });
+    return NextResponse.json({ success: false, error });
   }
 }
