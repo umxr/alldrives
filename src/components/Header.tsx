@@ -6,11 +6,14 @@ import Link from "next/link";
 
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { UserButton } from "@clerk/nextjs";
+import { SignInButton, SignedIn, SignedOut } from "@clerk/nextjs";
 
 const navigation = [
   { name: "Drives", href: "/drives" },
   { name: "About", href: "/about" },
   { name: "Roadmap", href: "/roadmap" },
+  { name: "Contact", href: "/contact" },
 ];
 
 export const Header = () => {
@@ -49,13 +52,17 @@ export const Header = () => {
             </Link>
           ))}
         </div>
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <Link
-            href="/contact"
-            className="text-sm font-semibold leading-6 text-white"
-          >
-            Get in touch <span aria-hidden="true">&rarr;</span>
-          </Link>
+        <div className="hidden lg:flex lg:flex-1 lg:gap-x-12 lg:justify-end items-center">
+          <SignedIn>
+            <UserButton afterSignOutUrl="/" userProfileMode="modal" />
+          </SignedIn>
+          <SignedOut>
+            <SignInButton mode="modal">
+              <p className="text-sm font-semibold leading-6 text-white cursor-pointer">
+                Sign in
+              </p>
+            </SignInButton>
+          </SignedOut>
         </div>
       </nav>
       <Dialog
@@ -95,12 +102,16 @@ export const Header = () => {
                 ))}
               </div>
               <div className="py-6">
-                <Link
-                  href="/"
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-gray-800"
-                >
-                  Get in touch
-                </Link>
+                <SignedIn>
+                  <UserButton afterSignOutUrl="/" userProfileMode="modal" />
+                </SignedIn>
+                <SignedOut>
+                  <SignInButton mode="modal">
+                    <p className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-800">
+                      Sign in
+                    </p>
+                  </SignInButton>
+                </SignedOut>
               </div>
             </div>
           </div>

@@ -1,5 +1,5 @@
 import "./globals.css";
-
+import { ClerkProvider } from "@clerk/nextjs";
 import { Analytics } from "@vercel/analytics/react";
 import { Header } from "@/components/Header";
 import { Inter } from "next/font/google";
@@ -18,13 +18,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="h-full">
-      <body className={`${inter.className} flex flex-col h-screen`}>
-        <Header />
-        <main className="flex-grow">{children}</main>
-        <Footer />
-        <Analytics />
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en" className="h-full">
+        <body className={`${inter.className} flex flex-col h-screen`}>
+          <Header />
+          <main className="flex-grow">{children}</main>
+          <Footer />
+          <Analytics />
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
