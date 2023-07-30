@@ -6,7 +6,7 @@ export default authMiddleware({
     "/about",
     "/contact",
     "/drives",
-    "/drives/[slug]",
+    "/drives/:slug",
     "/road-map",
     "/submit-drive",
     "/api/cron",
