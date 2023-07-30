@@ -1,24 +1,11 @@
-"use client";
-
 import { Logo } from "./Logo";
-import { useState } from "react";
 import Link from "next/link";
 
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { UserButton } from "@clerk/nextjs";
-import { SignInButton, SignedIn, SignedOut } from "@clerk/nextjs";
+import { navigation } from "./Header";
 
-export const navigation = [
-  { name: "Drives", href: "/drives" },
-  { name: "About", href: "/about" },
-  { name: "Roadmap", href: "/roadmap" },
-  { name: "Contact", href: "/contact" },
-];
-
-export const Header = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
+export const HeaderFallback = () => {
   return (
     <header className="bg-gray-900">
       <nav
@@ -35,7 +22,7 @@ export const Header = () => {
           <button
             type="button"
             className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-400"
-            onClick={() => setMobileMenuOpen(true)}
+            onClick={() => {}}
           >
             <span className="sr-only">Open main menu</span>
             <Bars3Icon className="h-6 w-6" aria-hidden="true" />
@@ -53,24 +40,12 @@ export const Header = () => {
           ))}
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:gap-x-12 lg:justify-end items-center">
-          <SignedIn>
-            <UserButton afterSignOutUrl="/" userProfileMode="modal" />
-          </SignedIn>
-          <SignedOut>
-            <SignInButton mode="modal">
-              <p className="text-sm font-semibold leading-6 text-white cursor-pointer">
-                Sign in
-              </p>
-            </SignInButton>
-          </SignedOut>
+          <p className="text-sm font-semibold leading-6 text-white cursor-pointer">
+            Sign in
+          </p>
         </div>
       </nav>
-      <Dialog
-        as="div"
-        className="lg:hidden"
-        open={mobileMenuOpen}
-        onClose={setMobileMenuOpen}
-      >
+      <Dialog as="div" className="lg:hidden" open={false} onClose={() => {}}>
         <div className="fixed inset-0 z-10" />
         <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-gray-900 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-white/10">
           <div className="flex items-center justify-between">
@@ -81,7 +56,7 @@ export const Header = () => {
             <button
               type="button"
               className="-m-2.5 rounded-md p-2.5 text-gray-400"
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={() => {}}
             >
               <span className="sr-only">Close menu</span>
               <XMarkIcon className="h-6 w-6" aria-hidden="true" />
@@ -94,7 +69,7 @@ export const Header = () => {
                   <Link
                     key={item.name}
                     href={item.href}
-                    onClick={() => setMobileMenuOpen(false)}
+                    onClick={() => {}}
                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-800"
                   >
                     {item.name}
@@ -102,16 +77,9 @@ export const Header = () => {
                 ))}
               </div>
               <div className="py-6">
-                <SignedIn>
-                  <UserButton afterSignOutUrl="/" userProfileMode="modal" />
-                </SignedIn>
-                <SignedOut>
-                  <SignInButton mode="modal">
-                    <p className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-800">
-                      Sign in
-                    </p>
-                  </SignInButton>
-                </SignedOut>
+                <p className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-800">
+                  Sign in
+                </p>
               </div>
             </div>
           </div>

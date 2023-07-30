@@ -1,10 +1,11 @@
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Analytics } from "@vercel/analytics/react";
-import { Header, HeaderFallback } from "@/components/Header";
+import { Header } from "@/components/Header";
 import { Inter } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Suspense } from "react";
+import { HeaderFallback } from "@/components/HeaderFallback";
 
 const inter = Inter({ subsets: ["latin"] });
 
