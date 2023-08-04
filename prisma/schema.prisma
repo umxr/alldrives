@@ -30,8 +30,6 @@ model Vote {
   driveId  String
   user     User     @relation(fields: [userId], references: [id])
   drive    Drive    @relation(fields: [driveId], references: [id])
-
-  @@index([userId, driveId], name: "user_post_index")
 }
 
 enum VoteType {

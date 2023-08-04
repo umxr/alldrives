@@ -1,8 +1,11 @@
+import { DriveVote } from "@/components/DriveVote";
 import { Hero } from "@/components/Hero";
 import { Stats } from "@/components/Stats";
 import { getDriveBySlug } from "@/groq/getDriveBySlug";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { SignInButton, SignedIn, SignedOut, auth } from "@clerk/nextjs";
+import { getUserByClerkId, prisma } from "@/db";
 
 type DrivePageProps = {
   params: { slug: string };
@@ -55,7 +58,16 @@ export async function generateMetadata({
 const Drive = async (props: DrivePageProps) => {
   const { params } = props;
   const slug = params.slug;
+  const { userId } = auth();
+  const dbUser = await getUserByClerkId(userId);
   const pageData = await getDriveBySlug(slug);
+  const voteData = await prisma.vote.findFirst({
+    where: {
+      driveId: pageData?._id,
+      userId: dbUser.id,
+    },
+  });
+
   if (!pageData) {
     return notFound();
   }
@@ -81,6 +93,9 @@ const Drive = async (props: DrivePageProps) => {
           />
         </Stats.List>
       </Stats>
+      <SignedIn>
+        <DriveVote driveId={pageData._id} />
+      </SignedIn>
     </>
   );
 };
