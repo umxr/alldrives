@@ -3,7 +3,7 @@ import { groq } from "next-sanity";
 import { Drive, drive } from "./drive";
 
 export const getDrivesQuery = groq`
-  *[_type == "drive" && public == true] | order(_createdAt asc) [$start...$end] {
+  *[_type == "drive" && public == true] | order(_createdAt desc) [$start...$end] {
     ${drive}
   }
 `;
