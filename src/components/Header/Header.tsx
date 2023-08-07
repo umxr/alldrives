@@ -5,10 +5,10 @@ import Link from "next/link";
 
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { UserButton } from "@clerk/nextjs";
 import { SignInButton, SignedIn, SignedOut } from "@clerk/nextjs";
 import { Logo } from "../Logo";
 import { NAVIGATION } from "./constants";
+import { UserMenu } from "../UserMenu";
 
 export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -48,7 +48,7 @@ export const Header = () => {
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:gap-x-12 lg:justify-end items-center">
           <SignedIn>
-            <UserButton afterSignOutUrl="/" userProfileMode="modal" />
+            <UserMenu />
           </SignedIn>
           <SignedOut>
             <SignInButton mode="modal">
@@ -97,7 +97,7 @@ export const Header = () => {
               </div>
               <div className="py-6">
                 <SignedIn>
-                  <UserButton afterSignOutUrl="/" userProfileMode="modal" />
+                  <UserMenu />
                 </SignedIn>
                 <SignedOut>
                   <SignInButton mode="modal">
